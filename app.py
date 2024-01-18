@@ -110,9 +110,9 @@ if upload_file is not None:
       count = cap.get(cv2.CAP_PROP_FRAME_COUNT)
       fps = cap.get(cv2.CAP_PROP_FPS)
 
-      writer = cv2.VideoWriter('./output/ball_object_detection_app_results.mp4',
-                                cv2.VideoWriter_fourcc(*'MP4V',),fps,
-                                frameSize=(int(width),int(height)))
+    #   writer = cv2.VideoWriter('./output/ball_object_detection_app_results.mp4',
+    #                             cv2.VideoWriter_fourcc(*'MP4V',),fps,
+    #                             frameSize=(int(width),int(height)))
     
       sports_ball_frames = []  # スポーツボールが検出されたフレームのインデックスを保存するリスト
       sports_ball_detection = []  # スポーツボールが検出されたバウンディングボックスのxyxy
@@ -132,14 +132,14 @@ if upload_file is not None:
           if 32 in categories:
               sports_ball_frames.append(frame)  # スポーツボールが検出されたフレームをリストに追加
               sports_ball_detection.append(results[0].boxes.xyxy)
-              writer.write(frame)  # スポーツボールが検出されたフレームのみを書き込む
+              #writer.write(frame)  # スポーツボールが検出されたフレームのみを書き込む
 
           frame_number += 1  # フレーム番号をインクリメント
           # プログレスバーを更新
           progress_bar.progress(frame_number / count)
 
       cap.release()
-      writer.release()
+      #writer.release()
 
       # プログレスバーを完了状態にする
       progress_bar.progress(1.0)
